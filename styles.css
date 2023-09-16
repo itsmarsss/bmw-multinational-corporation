@@ -45,16 +45,6 @@ body {
     padding: 0;
 }
 
-#bmw_cont {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 #bmw {
-    mix-blend-mode: multiply;
     width: 50%;
-    transform: translateY(-20px) rotateX(90deg) scale(0.7);
-    transform-origin: top;
-    transition: 200ms;
 }

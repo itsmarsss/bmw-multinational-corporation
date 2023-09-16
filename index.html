@@ -42,7 +42,64 @@
     </div>
 
     <div id="bmw_cont">
-        <img id="bmw" src="db/bmw.jpg" />
+        <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/controls/OrbitControls.js"></script>
+
+        <script>
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 0.1, 1000);
+            var renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById("bmw_cont").appendChild(renderer.domElement);
+
+            var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+
+            var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+
+            var loader = new THREE.GLTFLoader();
+
+            var model;
+
+            loader.load("db/bmw_emblem.gltf", function (gltf) {
+                model = gltf.scene;
+                scene.add(model);
+            }, undefined, function (error) {
+                console.error(error);
+            });
+
+            camera.position.z = 5;
+
+            var mouse = new THREE.Vector2();
+            document.addEventListener('mousemove', onMouseMove, false);
+
+            function onMouseMove(event) {
+                // Normalize mouse coordinates to the range [-1, 1]
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = (event.clientY / window.innerHeight) * 2 + 0.5;
+
+                // Update model's position or rotation based on mouse coordinates
+                if (model) {
+                    // For example, you can rotate the model based on mouse position
+                    model.rotation.x = mouse.y;
+                    model.rotation.y = mouse.x;
+                }
+            }
+
+            var animate = function () {
+                requestAnimationFrame(animate);
+
+                // Add any animation logic here if needed
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+
+        </script>
     </div>
 </body>
 
