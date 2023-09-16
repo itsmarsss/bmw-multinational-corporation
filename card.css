@@ -1,0 +1,59 @@
+.cards {
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 25px;
+}
+
+#advantages_list,
+#disadvantages_list {
+    display: flex;
+    gap: 25px;
+    width: calc(5 * 350px + 5 * 50px);
+    padding: 25px;
+    cursor: grab;
+}
+
+.content {
+    width: 100%;
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    gap: 15px;
+    background: #fff;
+    color: var(--text);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    transition: 150ms ease-in-out;
+    cursor: grab;
+    user-select: none;
+}
+
+.entry:hover {
+    transform: scale(1.01);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.main {
+    font-weight: bold;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.text {
+    font-weight: 700;
+    font-size: 25px;
+}
