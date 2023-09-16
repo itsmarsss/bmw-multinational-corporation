@@ -48,7 +48,7 @@
 
         <script>
             var scene = new THREE.Scene();
-            var camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 0.1, 1000);
+            var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
             var renderer = new THREE.WebGLRenderer({ alpha: true });
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.getElementById("bmw_cont").appendChild(renderer.domElement);
@@ -62,8 +62,12 @@
 
             var loader = new THREE.GLTFLoader();
 
-            var model;
+            var model; // This will hold your loaded model
+            var targetRotationX = 0; // Target rotation on the X-axis
+            var targetRotationY = 0; // Target rotation on the Y-axis
+            var lerpFactor = 0.1; // Adjust this value to control the smoothness of the transition
 
+            // Load the GLTF model
             loader.load("db/bmw_emblem.gltf", function (gltf) {
                 model = gltf.scene;
                 scene.add(model);
@@ -71,34 +75,45 @@
                 console.error(error);
             });
 
+            // Set up camera position
             camera.position.z = 5;
 
+            // Initialize the current rotation
+            var currentRotationX = 0;
+            var currentRotationY = 0;
+
+            // Set up mouse move event listener
             var mouse = new THREE.Vector2();
-            document.addEventListener('mousemove', onMouseMove, false);
+            document.addEventListener("mousemove", onMouseMove, false);
 
             function onMouseMove(event) {
                 // Normalize mouse coordinates to the range [-1, 1]
                 mouse.x = ((event.clientX / window.innerWidth) * 2 - 1) / 2;
-                mouse.y = (event.clientY / window.innerHeight) * 1.5 + 0.25;
+                mouse.y = ((event.clientY / window.innerHeight) * 1.5) / 2;
 
-                // Update model's position or rotation based on mouse coordinates
-                if (model) {
-                    // For example, you can rotate the model based on mouse position
-                    model.rotation.x = mouse.y;
-                    model.rotation.y = mouse.x;
-                }
+                // Calculate the target rotation based on mouse position
+                targetRotationX = mouse.y * Math.PI;
+                targetRotationY = mouse.x * Math.PI;
             }
 
+            // Create an animation loop to render the scene
             var animate = function () {
                 requestAnimationFrame(animate);
 
-                // Add any animation logic here if needed
+                // Smoothly interpolate the current rotation towards the target rotation
+                currentRotationX += (targetRotationX - currentRotationX) * lerpFactor;
+                currentRotationY += (targetRotationY - currentRotationY) * lerpFactor;
+
+                if (model) {
+                    // Apply the interpolated rotation to the model
+                    model.rotation.x = currentRotationX;
+                    model.rotation.y = currentRotationY;
+                }
 
                 renderer.render(scene, camera);
             };
 
             animate();
-
         </script>
     </div>
 </body>
