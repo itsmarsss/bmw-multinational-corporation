@@ -24,6 +24,11 @@ canvas {
     width: 0;
 }
 
+.accent {
+    color: var(--accent);
+    display: inline;
+}
+
 .header {
     background: white;
     height: 50px;
