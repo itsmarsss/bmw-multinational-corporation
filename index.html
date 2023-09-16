@@ -57,7 +57,7 @@
             scene.add(ambientLight);
 
             var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-            directionalLight.position.set(1, 1, 1);
+            directionalLight.position.set(0, 1, 1);
             scene.add(directionalLight);
 
             var loader = new THREE.GLTFLoader();
@@ -78,8 +78,8 @@
 
             function onMouseMove(event) {
                 // Normalize mouse coordinates to the range [-1, 1]
-                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-                mouse.y = (event.clientY / window.innerHeight) * 2 + 0.5;
+                mouse.x = ((event.clientX / window.innerWidth) * 2 - 1) / 2;
+                mouse.y = (event.clientY / window.innerHeight) * 1.5 + 0.25;
 
                 // Update model's position or rotation based on mouse coordinates
                 if (model) {

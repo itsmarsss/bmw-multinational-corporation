@@ -12,7 +12,6 @@ html {
 
 body {
     margin: 0;
-    padding-bottom: 500px;
 }
 
 ::-webkit-scrollbar {
@@ -43,8 +42,4 @@ body {
 #advantages,
 #disadvantages {
     padding: 0;
-}
-
-#bmw {
-    width: 50%;
 }
