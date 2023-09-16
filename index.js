@@ -2,7 +2,7 @@ const advantages_list = document.getElementById("advantages_list");
 const disadvantages_list = document.getElementById("disadvantages_list");
 
 async function loadText() {
-    const db_json = await fetch("/db/info.json")
+    const db_json = await fetch("db/info.json")
         .then(res => res.json())
         .then(out => out)
         .catch(err => { throw err });
