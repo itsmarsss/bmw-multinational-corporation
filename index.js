@@ -1,19 +1,19 @@
 const advantages_list = document.getElementById("advantages_list");
 const disadvantages_list = document.getElementById("disadvantages_list");
 
+async function loadText() {
+    const db_json = await fetch("/db/info.json")
+        .then(res => res.json())
+        .then(out => out)
+        .catch(err => { throw err });
 
-const db_json = await fetch("/db/info.json")
-    .then(res => res.json())
-    .then(out => out)
-    .catch(err => { throw err });
+    console.log(db_json);
 
-console.log(db_json);
+    advantages_list.innerHTML = "";
+    disadvantages_list.innerHTML = "";
 
-advantages_list.innerHTML = "";
-disadvantages_list.innerHTML = "";
-
-db_json.advantages.forEach(element => {
-    advantages_list.innerHTML += `
+    db_json.advantages.forEach(element => {
+        advantages_list.innerHTML += `
     <div class="entry">
         <div class="main">
             ${element.title}
@@ -23,10 +23,10 @@ db_json.advantages.forEach(element => {
         </div>
     </div>
     `;
-});
+    });
 
-db_json.disadvantages.forEach(element => {
-    disadvantages_list.innerHTML += `
+    db_json.disadvantages.forEach(element => {
+        disadvantages_list.innerHTML += `
     <div class="entry">
         <div class="main">
             ${element.title}
@@ -36,7 +36,10 @@ db_json.disadvantages.forEach(element => {
         </div>
     </div>
     `;
-});
+    });
+}
+
+loadText();
 
 const content = document.getElementsByClassName("content");
 Array.from(content).forEach(element => makeDraggable(element));
