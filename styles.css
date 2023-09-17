@@ -6,7 +6,7 @@
 */
 
 :root {
-    --background: #fdfdfd !important;
+    --background: #fafafa !important;
     --text: #1d1d1d !important;
     --accent: #6e6e6e !important;
 }
@@ -256,6 +256,10 @@ canvas {
 }
 
 @media screen and (max-width: 950px) {
+    canvas {
+        filter: blur(5px);
+    }
+
     .header_text {
         font-size: 20px;
     }
