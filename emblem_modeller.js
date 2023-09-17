@@ -1,6 +1,9 @@
 function loadEmblemModel() {
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    let fov = (window.innerWidth <= 950 ? 20 : 50);
+
+    var camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 0.1, 1000);
     var renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById("bmw_cont").innerHTML = "";

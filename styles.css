@@ -76,7 +76,7 @@ canvas {
     position: absolute;
     top: 100px;
     width: 100%;
-    height: calc(100% - 250px);
+    height: calc(100% - 175px);
     z-index: 1;
     display: -webkit-box;
     display: -ms-flexbox;

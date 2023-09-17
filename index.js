@@ -75,6 +75,8 @@ async function loadQuestions() {
     answer = document.getElementById("answer");
 
     Array.from(questions).forEach((element, index) => { circulate(element, index); addHover(element) });
+
+    resolutionCheck();
 }
 
 loadQuestions();
@@ -175,17 +177,21 @@ function resetCirculate(element) {
 let win_width = window.innerWidth;
 let win_height = window.innerHeight;
 setInterval(() => {
-    if (window.innerWidth <= 950) {
-        Array.from(questions).forEach((element, index) => resetCirculate(element, index));
-        return;
-    }
+    resolutionCheck();
+}, 100);
 
+function resolutionCheck() {
     if (win_width != window.innerWidth || win_height != window.innerHeight) {
         loadEmblemModel();
 
-        Array.from(questions).forEach((element, index) => circulate(element, index));
-
         win_width = window.innerWidth;
         win_height = window.innerHeight;
+
+        if (window.innerWidth <= 950) {
+            Array.from(questions).forEach((element, index) => resetCirculate(element, index));
+            return;
+        }
+
+        Array.from(questions).forEach((element, index) => circulate(element, index));
     }
-}, 100);
+}
