@@ -73,29 +73,40 @@ canvas {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: wiggle 10s infinite;
+    animation-play-state: running;
+}
+
+#bmw_info:has(.question_text:hover) .question_text,
+#bmw_info:has(.question_text:hover) {
+    animation-play-state: paused;
 }
 
 .question {
-    text-transform: uppercase;
-    font-weight: bold;
     position: absolute;
     left: 50%;
     top: 50%;
-    background: #fff;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     transform-origin: center;
-    transition: 250ms;
     cursor: pointer;
     user-select: none;
 }
 
-.question:hover {
+.question_text {
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 250ms;
+    transform-origin: center;
+    animation: counter-wiggle 10s infinite;
+    animation-play-state: running;
+}
+
+.question_text:hover {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-    padding: 20px;
-    left: calc(50% - 5px);
-    top: calc(50% - 10px);
+    font-size: 18px;
 }
 
 .answer,
@@ -107,8 +118,8 @@ canvas {
     left: 50%;
 }
 
-.answer:hover>.accent,
-.answer_mini:hover>.accent {
+.answer:hover .accent,
+.answer_mini:hover .accent {
     color: var(--text);
 }
 
@@ -130,6 +141,33 @@ canvas {
     min-width: 300px;
 }
 
+@keyframes wiggle {
+    0% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes counter-wiggle {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
+}
 
 @media screen and (max-width: 950px) {
     .header_text {
@@ -140,7 +178,7 @@ canvas {
         display: flex;
         flex-direction: column;
         top: 0;
-        height: unset;
+        height: unset;animation: none;
     }
 
     .question {
@@ -156,6 +194,10 @@ canvas {
         top: 0;
         padding: 10px;
         transform: scale(1.05) !important;
+    }
+
+    .question_text {
+        animation: none;
     }
 
     .question.answer {
