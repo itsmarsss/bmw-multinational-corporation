@@ -16,6 +16,7 @@ html {
     background: var(--background);
     color: var(--text);
     overflow-x: hidden;
+    scrollbar-width: none;
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
@@ -27,10 +28,6 @@ canvas {
     width: 100% !important;
     height: 100% !important;
     border-radius: 50px;
-}
-
-::-webkit-scrollbar {
-    width: 0;
 }
 
 .accent {
@@ -54,7 +51,6 @@ canvas {
 
 #end_header {
     margin-bottom: 0;
-    ;
 }
 
 .header_text {

@@ -30,6 +30,7 @@
     display: flex;
     gap: 25px;
     padding: 25px;
+    margin: 10px 0 50px 0;
     cursor: -webkit-grab;
     cursor: grab;
 }
@@ -38,7 +39,26 @@
     width: calc(100% - 50px);
     overflow: auto;
     overflow-y: hidden;
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: #cdcdcd transparent;
+}
+
+.content::-webkit-scrollbar {
+    height: 10px;
+    width: 0;
+}
+
+.content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: var(--text);
 }
 
 .snap {
