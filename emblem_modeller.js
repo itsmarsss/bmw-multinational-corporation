@@ -51,6 +51,8 @@ function onMouseMove(event) {
 document.addEventListener("click", onClick, false);
 
 function onClick() {
+    updateAnswer("(Hover/Click a Question)");
+
     if (model) {
         // Animate the scaling
         animateScale(1, 1.1, 100, function () {

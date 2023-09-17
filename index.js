@@ -59,7 +59,7 @@ async function loadQuestions() {
         if (element.question == "<ANSWER SLOT>" && element.answer == "<ANSWER SLOT>") {
             bmw_info.innerHTML += `
             <div class="question answer">
-                <div class="accent" id="answer">(Hover a Question)</div>
+                <div class="accent" id="answer">(Hover/Click a Question)</div>
             </div>`;
         } else {
             bmw_info.innerHTML += `
@@ -120,19 +120,20 @@ function addHover(element) {
         return;
     }
 
-    element.addEventListener("mouseover", () => {
-        let question_answer = element.getAttribute("data-answer");
+    element.addEventListener("mouseover", () => updateAnswer(element.getAttribute("data-answer")));
+}
 
-        answer.innerHTML = question_answer;
+function updateAnswer(answer_text) {
+    answer.innerHTML = answer_text;
 
-        let deg_interval = 360 / questions.length;
-        let angle = deg_interval * answer_index;
-        let x_radius = Math.min(bmw_cont.offsetWidth, window.innerWidth) / 2 - 100;
-        let y_radius = Math.min(bmw_cont.offsetHeight, window.innerHeight) / 2 - 100;
-        let x_trans = x_radius * Math.sin(degsToRads(angle)) - answer.parentElement.offsetWidth / 2;
-        let y_trans = -1 * y_radius * Math.cos(degsToRads(angle)) - answer.parentElement.offsetHeight / 2;
-        answer.parentElement.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
-    });
+    let deg_interval = 360 / questions.length;
+    let angle = deg_interval * answer_index;
+    let x_radius = Math.min(bmw_cont.offsetWidth, window.innerWidth) / 2 - 100;
+    let y_radius = Math.min(bmw_cont.offsetHeight, window.innerHeight) / 2 - 100;
+    let x_trans = x_radius * Math.sin(degsToRads(angle)) - answer.parentElement.offsetWidth / 2;
+    let y_trans = -1 * y_radius * Math.cos(degsToRads(angle)) - answer.parentElement.offsetHeight / 2;
+    answer.parentElement.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
+
 }
 
 function circulate(element, index) {

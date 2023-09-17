@@ -67,7 +67,7 @@ canvas {
     position: absolute;
     top: 100px;
     width: 100%;
-    height: calc(100% - 150px);
+    height: calc(100% - 175px);
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -87,6 +87,7 @@ canvas {
     transform-origin: center;
     transition: 250ms;
     cursor: pointer;
+    user-select: none;
 }
 
 .question:hover {
