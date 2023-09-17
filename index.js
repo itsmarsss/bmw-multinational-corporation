@@ -1,5 +1,8 @@
 const advantages_list = document.getElementById("advantages_list");
 const disadvantages_list = document.getElementById("disadvantages_list");
+const bmw_cont = document.getElementById("bmw_cont");
+const bmw_info = document.getElementById("bmw_info");
+let answer;
 
 async function loadText() {
     const db_json = await fetch("db/info.json")
@@ -41,6 +44,38 @@ async function loadText() {
 
 loadText();
 
+
+async function loadQuestions() {
+    const db_json = await fetch("db/qna.json")
+        .then(res => res.json())
+        .then(out => out)
+        .catch(err => { throw err });
+
+    console.log(db_json);
+
+    bmw_info.innerHTML = "";
+
+    db_json.qna.forEach(element => {
+        if (element.question == "<ANSWER SLOT>" && element.answer == "<ANSWER SLOT>") {
+            bmw_info.innerHTML += `
+            <div class="question answer">
+                <div class="accent" id="answer">(Hover a Question)</div>
+            </div>`;
+        } else {
+            bmw_info.innerHTML += `
+            <div class="question" data-answer="${element.answer}">
+                <div class="question_text">${element.question}</div>
+            </div>`;
+        }
+    });
+
+    answer = document.getElementById("answer");
+
+    Array.from(questions).forEach((element, index) => { circulate(element, index); addHover(element) });
+}
+
+loadQuestions();
+
 const content = document.getElementsByClassName("content");
 Array.from(content).forEach(element => makeDraggable(element));
 
@@ -78,14 +113,37 @@ function makeDraggable(element) {
 const degsToRads = deg => (deg * Math.PI) / 180.0;
 const questions = document.getElementsByClassName("question");
 
-Array.from(questions).forEach((element, index) => circulate(element, index));
+let answer_index;
+
+function addHover(element) {
+    if (element.classList.contains("answer")) {
+        return;
+    }
+
+    element.addEventListener("mouseover", () => {
+        let question_answer = element.getAttribute("data-answer");
+
+        answer.innerHTML = question_answer;
+
+        let deg_interval = 360 / questions.length;
+        let angle = deg_interval * answer_index;
+        let x_radius = Math.min(bmw_cont.offsetWidth, window.innerWidth) / 2 - 100;
+        let y_radius = Math.min(bmw_cont.offsetHeight, window.innerHeight) / 2 - 100;
+        let x_trans = x_radius * Math.sin(degsToRads(angle)) - answer.parentElement.offsetWidth / 2;
+        let y_trans = -1 * y_radius * Math.cos(degsToRads(angle)) - answer.parentElement.offsetHeight / 2;
+        answer.parentElement.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
+    });
+}
 
 function circulate(element, index) {
+    if (element.classList.contains("answer")) {
+        answer_index = index;
+    }
+
     let deg_interval = 360 / questions.length;
     let angle = deg_interval * index;
-    let container = document.getElementById("bmw_cont");
-    let x_radius = Math.min(container.offsetWidth, window.innerWidth) / 2 - (index == 0 ? 150 : 200);
-    let y_radius = Math.min(container.offsetHeight, window.innerHeight) / 2 - (index == 0 ? 150 : 200) + (element.classList.contains("answer") ? 100 : 0);
+    let x_radius = Math.min(bmw_cont.offsetWidth, window.innerWidth) / 2 - (index == 0 ? 150 : 200);
+    let y_radius = Math.min(bmw_cont.offsetHeight, window.innerHeight) / 2 - (index == 0 ? 150 : 200) + (element.classList.contains("answer") ? 100 : 0);
     let x_trans = x_radius * Math.sin(degsToRads(angle)) - element.offsetWidth / 2;
     let y_trans = -1 * y_radius * Math.cos(degsToRads(angle)) - element.offsetHeight / 2;
     element.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
@@ -94,10 +152,7 @@ function circulate(element, index) {
 let win_width = window.innerWidth;
 let win_height = window.innerHeight;
 setInterval(() => {
-    console.log("checked");
     if (win_width != window.innerWidth || win_height != window.innerHeight) {
-        console.log("rsize");
-
         Array.from(questions).forEach((element, index) => circulate(element, index));
 
         win_width = window.innerWidth;

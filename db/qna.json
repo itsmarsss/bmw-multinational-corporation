@@ -1,0 +1,44 @@
+{
+  "qna": [
+    {
+      "question": "Organization Headquarters?",
+      "answer": "Munich, Germany"
+    },
+    {
+      "question": "Country of Operation?",
+      "answer": "Germany, Brazil, China, India, Mexico, the Netherlands, South Africa, the United Kingdom, and the United States"
+    },
+    {
+      "question": "Revenues, profits/losses in 2020?",
+      "answer": "BMW annual revenue for 2020 was $113.076B, a 3.12% decline from 2019."
+    },
+    {
+      "question": "Organization Products?",
+      "answer": "BMW primarily manufactures and sells automobiles and motorcycles."
+    },
+    {
+      "question": "Slogan and mission statement?",
+      "answer": "BMW’s slogan which has been in use since 1960’s is “Sheer driving pleasure”, they strive to become the world’s leading provider of premium products and services for individual mobility"
+    },
+    {
+      "question": "<ANSWER SLOT>",
+      "answer": "<ANSWER SLOT>"
+    },
+    {
+      "question": "Website rating?",
+      "answer": "Bland colour palette, minimalistic, easy to navigate, appropriate use of images."
+    },
+    {
+      "question": "Corporation Ethicality?",
+      "answer": "“The BMW Group’s corporate culture is characterized by clear responsibility, mutual respect, and trust. Lawful conduct and ethical behavior are integral to our business activities and an important condition for securing the long-term success of our company.”, about 30% of BMW vehicles are manufactured using recycled and reused materials. Continued research in sustainability is one of BMW’s focus."
+    },
+    {
+      "question": "Less developed countries?",
+      "answer": "Yes"
+    },
+    {
+      "question": "Employee treatment?",
+      "answer": "Thailand - Good"
+    }
+  ]
+}
