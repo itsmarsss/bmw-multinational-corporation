@@ -113,8 +113,16 @@ canvas {
     filter: blur(2px) brightness(0.95);
 }
 
+.answer_mini {
+    display: none;
+}
+
 
 @media screen and (max-width: 950px) {
+    .header_text {
+        font-size: 20px;
+    }
+
     #bmw_info {
         display: flex;
         flex-direction: column;
@@ -144,6 +152,7 @@ canvas {
     }
 
     .answer_mini {
+        display: block;
         position: relative;
     }
 }

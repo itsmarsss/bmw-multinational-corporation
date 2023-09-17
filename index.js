@@ -59,12 +59,12 @@ async function loadQuestions() {
     db_json.qna.forEach(element => {
         if (element.question == "<ANSWER SLOT>" && element.answer == "<ANSWER SLOT>") {
             bmw_info.innerHTML += `
-            <div class="question answer">
+            <div class="real question answer">
                 <div class="accent" id="answer">(Hover/Click a Question)</div>
             </div>`;
         } else {
             bmw_info.innerHTML += `
-            <div class="question" data-answer="${element.answer}">
+            <div class="real question" data-answer="${element.answer}">
                 <div class="question_text">${element.question}</div>
             </div>`;
         }
@@ -112,7 +112,7 @@ function makeDraggable(element) {
 }
 
 const degsToRads = deg => (deg * Math.PI) / 180.0;
-const questions = document.getElementsByClassName("question");
+const questions = document.getElementsByClassName("real");
 
 let answer_index;
 
@@ -130,6 +130,9 @@ function updateAnswer(answer_text) {
 
     if (window.innerWidth <= 950) {
         Array.from(questions).forEach((element, index) => resetCirculate(element, index));
+        if (answer_text != "(Hover/Click a Question)") {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        }
         return;
     }
 
@@ -164,11 +167,13 @@ function resetCirculate(element) {
 let win_width = window.innerWidth;
 let win_height = window.innerHeight;
 setInterval(() => {
+    if (window.innerWidth <= 950) {
+        Array.from(questions).forEach((element, index) => resetCirculate(element, index));
+        return;
+    }
+
     if (win_width != window.innerWidth || win_height != window.innerHeight) {
-        if (window.innerWidth <= 950) {
-            Array.from(questions).forEach((element, index) => resetCirculate(element, index));
-            return;
-        }
+        loadEmblemModel();
 
         Array.from(questions).forEach((element, index) => circulate(element, index));
 
