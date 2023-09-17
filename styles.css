@@ -68,7 +68,7 @@ canvas {
     position: absolute;
     top: 100px;
     width: 100%;
-    height: calc(100% - 325px);
+    height: calc(100% - 550px);
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -129,7 +129,7 @@ canvas {
 }
 
 #answer_mini_cont {
-    height: 200px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -174,11 +174,17 @@ canvas {
         font-size: 20px;
     }
 
+    #bmw_cont {
+        position: absolute;
+    }
+
     #bmw_info {
+        position: relative;
         display: flex;
         flex-direction: column;
         top: 0;
-        height: unset;animation: none;
+        height: unset;
+        animation: none;
     }
 
     .question {
@@ -193,11 +199,15 @@ canvas {
         left: 0;
         top: 0;
         padding: 10px;
-        transform: scale(1.05) !important;
     }
 
     .question_text {
         animation: none;
+    }
+
+    .question_text:hover {
+        font-size: 16px;
+        transform: scale(1.05);
     }
 
     .question.answer {
