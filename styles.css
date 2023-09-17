@@ -94,13 +94,17 @@ canvas {
 .question:hover {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
     padding: 20px;
-    left: calc(50% - 10px);
+    left: calc(50% - 5px);
     top: calc(50% - 10px);
 }
 
 .answer,
 .answer_mini {
     text-align: center;
+}
+
+.answer:hover {
+    left: 50%;
 }
 
 .answer:hover>.accent,
