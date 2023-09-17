@@ -120,6 +120,7 @@ let answer_index;
 
 function addHover(element) {
     if (element.classList.contains("answer") || element.classList.contains("answer_mini")) {
+        element.addEventListener("click", (e) => e.stopPropagation());
         return;
     }
 
@@ -145,9 +146,7 @@ function updateAnswer(answer_text) {
     answer.parentElement.parentElement.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
 }
 
-function scrollToAnswer(event) {
-    event.stopPropagation();
-
+function scrollToAnswer() {
     if (window.innerWidth <= 950) {
         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 
