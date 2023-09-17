@@ -55,6 +55,29 @@ canvas {
     padding: 0;
 }
 
+#bmw {
+    position: relative;
+}
+
 #bmw_cont {
     width: 100%;
+}
+
+#bmw_info {
+    background: #ff000050;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: calc(100% - 100px);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bmw_info>.question {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }

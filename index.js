@@ -74,3 +74,19 @@ function makeDraggable(element) {
 
     element.addEventListener("mousedown", mouseDownHandler);
 }
+
+const degsToRads = deg => (deg * Math.PI) / 180.0;
+const questions = document.getElementsByClassName("question");
+
+Array.from(questions).forEach((element, index) => circulate(element, index));
+
+function circulate(element, index) {
+    let deg_interval = 360 / questions.length;
+    let angle = deg_interval * index;
+    let radius = 350;
+    let x_trans = radius * Math.sin(degsToRads(angle));
+    let y_trans = -1 * radius * Math.cos(degsToRads(angle));
+    element.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
+}
+
+
