@@ -16,11 +16,11 @@ html {
     background: var(--background);
     color: var(--text);
     overflow-x: hidden;
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 body {
     margin: 0;
-    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 canvas {
@@ -50,6 +50,11 @@ canvas {
 
 #bmw_header {
     border-top: var(--background) 5px solid;
+}
+
+#end_header {
+    margin-bottom: 0;
+    ;
 }
 
 .header_text {
