@@ -188,9 +188,11 @@ setInterval(() => {
 }, 100);
 
 function resolutionCheck() {
-    if (win_width != window.innerWidth || win_height != window.innerHeight) {
+    if (win_width != window.innerWidth) {
         loadEmblemModel();
+    }
 
+    if (win_width != window.innerWidth || win_height != window.innerHeight) {
         win_width = window.innerWidth;
         win_height = window.innerHeight;
 
