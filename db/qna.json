@@ -2,15 +2,15 @@
   "qna": [
     {
       "question": "Organization Headquarters?",
-      "answer": "Munich, Germany"
+      "answer": "BMW’s headquarters is located in Munich, Germany"
     },
     {
-      "question": "Country of Operation?",
-      "answer": "Germany, Brazil, China, India, Mexico, the Netherlands, South Africa, the United Kingdom, and the United States"
+      "question": "Main Countries of Operation?",
+      "answer": "Germany, Brazil, China, India, Mexico, the Netherlands, South Africa, the United Kingdom, and the United States."
     },
     {
       "question": "Revenues, profits/losses in 2020?",
-      "answer": "BMW annual revenue for 2020 was $113.076B, a 3.12% decline from 2019."
+      "answer": "BMW's annual revenue for 2020 was $113.076B, a 3.12% decline from 2019."
     },
     {
       "question": "Organization Products?",
@@ -18,7 +18,7 @@
     },
     {
       "question": "Slogan and mission statement?",
-      "answer": "BMW’s slogan which has been in use since 1960’s is “Sheer driving pleasure”, they strive to become the world’s leading provider of premium products and services for individual mobility"
+      "answer": "BMW’s slogan which has been in use since the 1960s is “Sheer driving pleasure”, they strive to become the world’s leading provider of premium products and services for individual mobility"
     },
     {
       "question": "<ANSWER SLOT>",
@@ -26,19 +26,19 @@
     },
     {
       "question": "Website rating?",
-      "answer": "Bland colour palette, minimalistic, easy to navigate, appropriate use of images."
+      "answer": "A bland and non-vibrant colour palette, a minimalistic design with an intuitive navigation philosophy. The website has an appropriate amount of images where necessary."
     },
     {
       "question": "Corporation Ethicality?",
-      "answer": "“The BMW Group’s corporate culture is characterized by clear responsibility, mutual respect, and trust. Lawful conduct and ethical behavior are integral to our business activities and an important condition for securing the long-term success of our company.”, about 30% of BMW vehicles are manufactured using recycled and reused materials. Continued research in sustainability is one of BMW’s focus."
+      "answer": "BMW is “characterized by clear responsibility, mutual respect, and trust.”. Additionally, about 30% of BMW vehicles are manufactured using recycled and reused materials. Continued research in sustainability is one of BMW’s focus."
     },
     {
       "question": "Less developed countries?",
-      "answer": "Yes"
+      "answer": "BMW operates in several less-developed countries including Bulgaria and Thailand."
     },
     {
       "question": "Employee treatment?",
-      "answer": "Thailand - Good"
+      "answer": "Some less developed countries are Bulgaria and Thailand. BMW promotes human rights and favourable working conditions in the BMW Group, they have a 12-page Group Code on Human Rights and Working Conditions."
     }
   ]
 }
