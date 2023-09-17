@@ -30,6 +30,11 @@ canvas {
     border-radius: 50px;
 }
 
+::-webkit-scrollbar {
+    height: 10px;
+    width: 0;
+}
+
 .accent {
     color: var(--accent);
     display: inline;
