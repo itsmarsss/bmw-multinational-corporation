@@ -5,6 +5,9 @@ const bmw_info = document.getElementById("bmw_info");
 const answer_mini = document.getElementById("answer_mini");
 let answer;
 
+let win_width = window.innerWidth;
+let win_height = window.innerHeight;
+
 async function loadText() {
     const db_json = await fetch("db/info.json")
         .then(res => res.json())
@@ -77,14 +80,16 @@ async function loadQuestions() {
     Array.from(questions).forEach((element, index) => { circulate(element, index); addHover(element) });
 
     resolutionCheck();
+    win_width = 0;
+    win_height = 0;
 }
 
 loadQuestions();
 
 const content = document.getElementsByClassName("content");
-Array.from(content).forEach(element => makeDraggable(element));
+Array.from(content).forEach(element => makeHorizontalScroll(element));
 
-function makeDraggable(element) {
+function makeHorizontalScroll(element) {
     let pos = { left: 0, x: 0 };
 
     const mouseDownHandler = function (e) {
@@ -100,6 +105,10 @@ function makeDraggable(element) {
     };
 
     const mouseMoveHandler = function (e) {
+        if (window.innerWidth <= 950) {
+            return;
+        }
+
         // How far the mouse has been moved
         const dx = e.clientX - pos.x;
 
@@ -174,8 +183,6 @@ function resetCirculate(element) {
     element.style.transform = "unset";
 }
 
-let win_width = window.innerWidth;
-let win_height = window.innerHeight;
 setInterval(() => {
     resolutionCheck();
 }, 100);
@@ -188,9 +195,15 @@ function resolutionCheck() {
         win_height = window.innerHeight;
 
         if (window.innerWidth <= 950) {
+            advantages_list.classList.add("snap");
+            disadvantages_list.classList.add("snap");
+
             Array.from(questions).forEach((element, index) => resetCirculate(element, index));
             return;
         }
+
+        advantages_list.classList.remove("snap");
+        disadvantages_list.classList.remove("snap");
 
         Array.from(questions).forEach((element, index) => circulate(element, index));
     }

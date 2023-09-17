@@ -39,7 +39,9 @@
     overflow: auto;
     overflow-y: hidden;
     scrollbar-width: none;
+}
 
+.snap {
     scroll-snap-type: x mandatory;
 }
 
