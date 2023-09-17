@@ -84,11 +84,23 @@ function circulate(element, index) {
     let deg_interval = 360 / questions.length;
     let angle = deg_interval * index;
     let container = document.getElementById("bmw_cont");
-    let x_radius = container.offsetWidth / 2 - (index == 0 ? 150 : 200);
-    let y_radius = container.offsetHeight / 2 - (index == 0 ? 150 : 200) + (element.classList.contains("answer") ? 100 : 0);
+    let x_radius = Math.min(container.offsetWidth, window.innerWidth) / 2 - (index == 0 ? 150 : 200);
+    let y_radius = Math.min(container.offsetHeight, window.innerHeight) / 2 - (index == 0 ? 150 : 200) + (element.classList.contains("answer") ? 100 : 0);
     let x_trans = x_radius * Math.sin(degsToRads(angle)) - element.offsetWidth / 2;
     let y_trans = -1 * y_radius * Math.cos(degsToRads(angle)) - element.offsetHeight / 2;
     element.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
 }
 
+let win_width = window.innerWidth;
+let win_height = window.innerHeight;
+setInterval(() => {
+    console.log("checked");
+    if (win_width != window.innerWidth || win_height != window.innerHeight) {
+        console.log("rsize");
 
+        Array.from(questions).forEach((element, index) => circulate(element, index));
+
+        win_width = window.innerWidth;
+        win_height = window.innerHeight;
+    }
+}, 100);
