@@ -113,8 +113,17 @@ canvas {
     filter: blur(2px) brightness(0.95);
 }
 
+#answer_mini_cont {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .answer_mini {
     display: none;
+    width: 50%;
+    min-width: 300px;
 }
 
 
@@ -135,20 +144,18 @@ canvas {
         left: 0;
         top: 0;
         margin: 10px;
+        padding: 10px;
     }
 
     .question:hover {
         left: 0;
         top: 0;
-        margin: 0;
+        padding: 10px;
+        transform: scale(1.05) !important;
     }
 
     .question.answer {
         display: none;
-    }
-
-    #answer_mini_cont {
-        height: 400px;
     }
 
     .answer_mini {

@@ -122,6 +122,7 @@ function addHover(element) {
     }
 
     element.addEventListener("mouseover", () => updateAnswer(element.getAttribute("data-answer")));
+    element.addEventListener("click", () => scrollToAnswer());
 }
 
 function updateAnswer(answer_text) {
@@ -130,9 +131,6 @@ function updateAnswer(answer_text) {
 
     if (window.innerWidth <= 950) {
         Array.from(questions).forEach((element, index) => resetCirculate(element, index));
-        if (answer_text != "(Hover/Click a Question)") {
-            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-        }
         return;
     }
 
@@ -143,7 +141,14 @@ function updateAnswer(answer_text) {
     let x_trans = x_radius * Math.sin(degsToRads(angle)) - answer.parentElement.offsetWidth / 2;
     let y_trans = -1 * y_radius * Math.cos(degsToRads(angle)) - answer.parentElement.offsetHeight / 2;
     answer.parentElement.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
+}
 
+function scrollToAnswer() {
+    if (window.innerWidth <= 950) {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+
+        return;
+    }
 }
 
 function circulate(element, index) {
