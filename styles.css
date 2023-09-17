@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root {
     --background: #f5f5f5 !important;
     --text: #1d1d1d !important;
@@ -71,14 +78,22 @@ canvas {
     width: 100%;
     height: calc(100% - 550px);
     z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-animation-play-state: running;
     animation-play-state: running;
 }
 
 #bmw_info:has(.question_text:hover) .question_text,
 #bmw_info:has(.question_text:hover) {
+    -webkit-animation-play-state: paused;
     animation-play-state: paused;
 }
 
@@ -86,24 +101,39 @@ canvas {
     position: absolute;
     left: 50%;
     top: 50%;
+    -webkit-transition: 250ms;
+    -o-transition: 250ms;
+    transition: 250ms;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
     transform-origin: center;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
 .question_text {
+    -webkit-box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     text-transform: uppercase;
     font-weight: bold;
     background: #fff;
     padding: 10px;
     border-radius: 10px;
+    -webkit-transition: 250ms;
+    -o-transition: 250ms;
     transition: 250ms;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
     transform-origin: center;
+    -webkit-animation-play-state: running;
     animation-play-state: running;
 }
 
 .question_text:hover {
+    -webkit-box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
     font-size: 18px;
 }
@@ -124,13 +154,20 @@ canvas {
 
 #bmw_info:has(.answer:hover) .question:not(.answer),
 #bmw:has(.answer_mini:hover) .question:not(.answer_mini) {
+    -webkit-filter: blur(2px) brightness(0.95);
     filter: blur(2px) brightness(0.95);
 }
 
 #answer_mini_cont {
     height: 400px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -141,39 +178,79 @@ canvas {
 }
 
 #bmw_info {
-    animation: wiggle 10s infinite;
-    animation-delay: 2s;
+    -webkit-animation: wiggle 15s infinite ease-in-out;
+    animation: wiggle 15s infinite ease-in-out;
 }
 
 .question_text {
-    animation: counter-wiggle 10s infinite;
-    animation-delay: 2s;
+    -webkit-animation: counter-wiggle 15s infinite ease-in-out;
+    animation: counter-wiggle 15s infinite ease-in-out;
 }
 
-@keyframes wiggle {
+@-webkit-keyframes wiggle {
     0% {
+        -webkit-transform: rotate(-10deg);
         transform: rotate(-10deg);
     }
 
     50% {
+        -webkit-transform: rotate(10deg);
         transform: rotate(10deg);
     }
 
     100% {
+        -webkit-transform: rotate(-10deg);
         transform: rotate(-10deg);
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+}
+
+@-webkit-keyframes counter-wiggle {
+    0% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
     }
 }
 
 @keyframes counter-wiggle {
     0% {
+        -webkit-transform: rotate(10deg);
         transform: rotate(10deg);
     }
 
     50% {
+        -webkit-transform: rotate(-10deg);
         transform: rotate(-10deg);
     }
 
     100% {
+        -webkit-transform: rotate(10deg);
         transform: rotate(10deg);
     }
 }
@@ -189,10 +266,16 @@ canvas {
 
     #bmw_info {
         position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         top: 0;
         height: unset;
+        -webkit-animation: none;
         animation: none;
     }
 
@@ -211,11 +294,14 @@ canvas {
     }
 
     .question_text {
+        -webkit-animation: none;
         animation: none;
     }
 
     .question_text:hover {
         font-size: 16px;
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
         transform: scale(1.05);
     }
 
