@@ -141,7 +141,6 @@ canvas {
 .question_text:hover {
     -webkit-box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
-    //font-size: 18px;
     scale: 1.1;
 }
 
@@ -264,6 +263,7 @@ canvas {
 
 @media screen and (max-width: 950px) {
     canvas {
+        -webkit-filter: blur(5px);
         filter: blur(5px);
     }
 
