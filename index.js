@@ -60,7 +60,7 @@ async function loadQuestions() {
         if (element.question == "<ANSWER SLOT>" && element.answer == "<ANSWER SLOT>") {
             bmw_info.innerHTML += `
             <div class="real question answer">
-                <div class="question_text">
+                <div class="question_text answer_text">
                     <div class="accent" id="answer">(Hover/Click a Question)</div>
                 </div>
             </div>`;

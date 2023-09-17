@@ -57,3 +57,30 @@
     font-weight: 700;
     font-size: 25px;
 }
+
+@media screen and (max-width: 450px) {
+    .title {
+        font-size: 20px;
+    }
+
+    #advantages_list,
+    #disadvantages_list {
+        display: flex;
+        gap: 25px;
+        width: calc(5 * 250px + 5 * 50px);
+        padding: 25px;
+        cursor: grab;
+    }
+
+    .entry {
+        width: 250px;
+    }
+
+    .main {
+        font-size: 10px;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+}

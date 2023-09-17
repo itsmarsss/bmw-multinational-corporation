@@ -8,6 +8,7 @@ html {
     font-family: "Helvetica";
     background: var(--background);
     color: var(--text);
+    overflow-x: hidden;
 }
 
 body {
@@ -73,7 +74,6 @@ canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: wiggle 10s infinite;
     animation-play-state: running;
 }
 
@@ -100,7 +100,6 @@ canvas {
     border-radius: 10px;
     transition: 250ms;
     transform-origin: center;
-    animation: counter-wiggle 10s infinite;
     animation-play-state: running;
 }
 
@@ -114,8 +113,8 @@ canvas {
     text-align: center;
 }
 
-.answer:hover {
-    left: 50%;
+.answer_text:hover {
+    font-size: 16px;
 }
 
 .answer:hover .accent,
@@ -139,6 +138,16 @@ canvas {
     display: none;
     width: 50%;
     min-width: 300px;
+}
+
+#bmw_info {
+    animation: wiggle 10s infinite;
+    animation-delay: 2s;
+}
+
+.question_text {
+    animation: counter-wiggle 10s infinite;
+    animation-delay: 2s;
 }
 
 @keyframes wiggle {
