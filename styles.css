@@ -68,7 +68,7 @@ canvas {
     position: absolute;
     top: 100px;
     width: 100%;
-    height: calc(100% - 175px);
+    height: calc(100% - 325px);
     z-index: 1;
     display: flex;
     justify-content: center;
