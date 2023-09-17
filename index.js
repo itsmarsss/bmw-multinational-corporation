@@ -124,7 +124,7 @@ function addHover(element) {
     }
 
     element.addEventListener("mouseover", () => updateAnswer(element.getAttribute("data-answer")));
-    element.addEventListener("click", () => scrollToAnswer());
+    element.addEventListener("click", scrollToAnswer);
 }
 
 function updateAnswer(answer_text) {
@@ -145,7 +145,9 @@ function updateAnswer(answer_text) {
     answer.parentElement.parentElement.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
 }
 
-function scrollToAnswer() {
+function scrollToAnswer(event) {
+    event.stopPropagation();
+
     if (window.innerWidth <= 950) {
         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 

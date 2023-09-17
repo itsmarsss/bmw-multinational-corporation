@@ -50,7 +50,7 @@ function loadEmblemModel() {
     }
 
     // Add event listener to detect clicks
-    bmw_info.addEventListener("click", onClick, false);
+    document.addEventListener("click", onClick, false);
 
     function onClick() {
         updateAnswer("(Hover/Click a Question)");
