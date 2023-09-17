@@ -29,20 +29,24 @@
     display: -ms-flexbox;
     display: flex;
     gap: 25px;
-    width: calc(5 * 350px + 5 * 50px);
     padding: 25px;
     cursor: -webkit-grab;
     cursor: grab;
 }
 
 .content {
-    width: 100%;
+    width: calc(100% - 50px);
     overflow: auto;
     overflow-y: hidden;
     scrollbar-width: none;
+
+    scroll-snap-type: x mandatory;
 }
 
 .entry {
+    scroll-snap-align: center;
+    flex: none;
+
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -100,7 +104,6 @@
         display: -ms-flexbox;
         display: flex;
         gap: 25px;
-        width: calc(5 * 250px + 5 * 50px);
         padding: 25px;
         cursor: -webkit-grab;
         cursor: grab;
