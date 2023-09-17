@@ -35,7 +35,7 @@ canvas {
     margin-bottom: 40px;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     border-bottom: var(--background) 5px solid;
 }
 
@@ -98,14 +98,52 @@ canvas {
     top: calc(50% - 10px);
 }
 
-.answer {
+.answer,
+.answer_mini {
     text-align: center;
 }
 
-.answer:hover>.accent {
+.answer:hover>.accent,
+.answer_mini:hover>.accent {
     color: var(--text);
 }
 
-#bmw_info:has(.answer:hover) .question:not(.answer) {
+#bmw_info:has(.answer:hover) .question:not(.answer),
+#bmw:has(.answer_mini:hover) .question:not(.answer_mini) {
     filter: blur(2px) brightness(0.95);
+}
+
+
+@media screen and (max-width: 950px) {
+    #bmw_info {
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        height: unset;
+    }
+
+    .question {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 10px;
+    }
+
+    .question:hover {
+        left: 0;
+        top: 0;
+        margin: 0;
+    }
+
+    .question.answer {
+        display: none;
+    }
+
+    #answer_mini_cont {
+        height: 400px;
+    }
+
+    .answer_mini {
+        position: relative;
+    }
 }

@@ -48,7 +48,7 @@ function onMouseMove(event) {
 }
 
 // Add event listener to detect clicks
-document.addEventListener("click", onClick, false);
+document.getElementById("bmw_cont").addEventListener("click", onClick, false);
 
 function onClick() {
     updateAnswer("(Hover/Click a Question)");

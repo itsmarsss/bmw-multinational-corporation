@@ -2,6 +2,7 @@ const advantages_list = document.getElementById("advantages_list");
 const disadvantages_list = document.getElementById("disadvantages_list");
 const bmw_cont = document.getElementById("bmw_cont");
 const bmw_info = document.getElementById("bmw_info");
+const answer_mini = document.getElementById("answer_mini");
 let answer;
 
 async function loadText() {
@@ -116,7 +117,7 @@ const questions = document.getElementsByClassName("question");
 let answer_index;
 
 function addHover(element) {
-    if (element.classList.contains("answer")) {
+    if (element.classList.contains("answer") || element.classList.contains("answer_mini")) {
         return;
     }
 
@@ -125,6 +126,12 @@ function addHover(element) {
 
 function updateAnswer(answer_text) {
     answer.innerHTML = answer_text;
+    answer_mini.innerHTML = answer_text;
+
+    if (window.innerWidth <= 950) {
+        Array.from(questions).forEach((element, index) => resetCirculate(element, index));
+        return;
+    }
 
     let deg_interval = 360 / questions.length;
     let angle = deg_interval * answer_index;
@@ -150,10 +157,19 @@ function circulate(element, index) {
     element.style.transform = `translateX(${x_trans}px) translateY(${y_trans}px)`;
 }
 
+function resetCirculate(element) {
+    element.style.transform = "unset";
+}
+
 let win_width = window.innerWidth;
 let win_height = window.innerHeight;
 setInterval(() => {
     if (win_width != window.innerWidth || win_height != window.innerHeight) {
+        if (window.innerWidth <= 950) {
+            Array.from(questions).forEach((element, index) => resetCirculate(element, index));
+            return;
+        }
+
         Array.from(questions).forEach((element, index) => circulate(element, index));
 
         win_width = window.innerWidth;
