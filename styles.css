@@ -20,6 +20,7 @@ html {
 
 body {
     margin: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 canvas {
